@@ -306,7 +306,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 147 (last added: recurrent_param)
+// LayerParameter next available layer-specific ID: 148 (last added: hdfshdf5_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -376,6 +376,7 @@ message LayerParameter {
   optional FlattenParameter flatten_param = 135;
   optional HDF5DataParameter hdf5_data_param = 112;
   optional HDF5OutputParameter hdf5_output_param = 113;
+  optional HDFSHDF5DataParameter hdfshdf5_data_param = 147;
   optional HingeLossParameter hinge_loss_param = 114;
   optional ImageDataParameter image_data_param = 115;
   optional InfogainLossParameter infogain_loss_param = 116;
@@ -752,6 +753,24 @@ message HDF5DataParameter {
   // but data between different files are not interleaved; all of a file's
   // data are output (in a random order) before moving onto another file.
   optional bool shuffle = 3 [default = false];
+}
+
+message HDFSHDF5DataParameter {
+  // Specify the data source.
+  optional string source = 1;
+  // Specify the batch size.
+  optional uint32 batch_size = 2 [default = 1];
+
+  // Specify whether to shuffle the data.
+  // If shuffle == true, the ordering of the HDF5 files is shuffled,
+  // and the ordering of data within any given HDF5 file is shuffled,
+  // but data between different files are not interleaved; all of a file's
+  // data are output (in a random order) before moving onto another file.
+  optional bool shuffle = 3 [default = false];
+  
+  optional string hdfs_config_dir = 4 [default = "default"];
+  optional uint32 hdfs_master_port = 6 [default = 0];
+  optional uint32 max_number_minutes_retry = 7 [default = 0];
 }
 
 message HDF5OutputParameter {
@@ -1227,6 +1246,7 @@ message V1LayerParameter {
     FLATTEN = 8;
     HDF5_DATA = 9;
     HDF5_OUTPUT = 10;
+    HDFSHDF5_DATA = 40;
     HINGE_LOSS = 28;
     IM2COL = 11;
     IMAGE_DATA = 12;
@@ -1273,6 +1293,7 @@ message V1LayerParameter {
   optional ExpParameter exp_param = 41;
   optional HDF5DataParameter hdf5_data_param = 13;
   optional HDF5OutputParameter hdf5_output_param = 14;
+  optional HDFSHDF5DataParameter hdfshdf5_data_param = 43;
   optional HingeLossParameter hinge_loss_param = 29;
   optional ImageDataParameter image_data_param = 15;
   optional InfogainLossParameter infogain_loss_param = 16;

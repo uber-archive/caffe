@@ -17,6 +17,9 @@ void hdf5_load_nd_dataset_helper(
   herr_t status;
   int ndims;
   status = H5LTget_dataset_ndims(file_id, dataset_name_, &ndims);
+  if(status<0){
+    throw 20;
+   }
   CHECK_GE(status, 0) << "Failed to get dataset ndims for " << dataset_name_;
   CHECK_GE(ndims, min_dim);
   CHECK_LE(ndims, max_dim);
