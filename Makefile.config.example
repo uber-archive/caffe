@@ -1,6 +1,15 @@
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
 
+# INCLUDE HDFS LIBRARIES for HDFSHDF5 layer
+HADOOP_PREFIX := $(dirname $(dirname $(which hdfs)))
+INCLUDE_DIRS += $(HADOOP_PREFIX)/include
+LIBRARY_DIRS += $(HADOOP_PREFIX)/lib/native
+
+# uncomment below if you want stability with HDFS DNS
+# JAVA_HOME := $(readlink -f /usr/bin/java | sed "s:bin/java::")
+# sudo sed -i "s/#networkaddress.cache.ttl=-1/networkaddress.cache.ttl=20/" $JAVA_HOME/jre/lib/security/java.security
+
 # cuDNN acceleration switch (uncomment to build with cuDNN).
 # USE_CUDNN := 1
 
@@ -107,12 +116,6 @@ DISTRIBUTE_DIR := distribute
 
 # The ID of the GPU that 'make runtest' will use to run unit tests.
 TEST_GPUID := 0
-
-# INCLUDE HDFS LIBRARIES
-HADOOP_PREFIX := /usr/local/hadoop
-INCLUDE_DIRS += $(HADOOP_PREFIX)/include
-LIBRARY_DIRS += $(HADOOP_PREFIX)/lib/native
-# sudo sed -i "s/#networkaddress.cache.ttl=-1/networkaddress.cache.ttl=20/" $JAVA_HOME/jre/lib/security/java.security
 
 # enable pretty build (comment to see full commands)
 Q ?= @
