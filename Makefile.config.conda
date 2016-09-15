@@ -28,7 +28,7 @@ USE_LEVELDB := 0
 # CUSTOM_CXX := g++
 
 # CUDA directory contains bin/ and lib/ directories that we need.
-CUDA_DIR := $SERPENT
+CUDA_DIR := $(SERPENT)
 # On Ubuntu 14.04, if cuda tools are installed via
 # "sudo apt-get install nvidia-cuda-toolkit" then use this instead:
 # CUDA_DIR := /usr
@@ -70,7 +70,7 @@ BLAS := atlas
 # Verify anaconda location, sometimes it's in root.
 
 # Occurences of 'SERPENT' are replaced in build.sh
-ANACONDA_HOME := $SERPENT
+ANACONDA_HOME := $(SERPENT)
 PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
 		/usr/include/python2.7/ \
 		$(ANACONDA_HOME)/include/python2.7 \
