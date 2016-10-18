@@ -6,8 +6,6 @@ FROM localhost:5000/caffe-build:caffebuild-test-2016_10_17_16_22_30
 RUN apt-get update && \
     apt-get install -y git libhdf5-serial-dev
 
-RUN echo "bla"
-
 #####################
 # install caffe-hdfs
 #####################
