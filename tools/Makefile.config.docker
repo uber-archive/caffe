@@ -103,7 +103,7 @@ LIBRARY_DIRS := $(PYTHON_LIB) /usr/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /u
 #LIBRARY_DIRS += $(shell brew --prefix)/lib
 
 # INCLUDE HDFS LIBRARIES for HDFSHDF5 layer
-HADOOP_PREFIX := /opt/hadoop/
+HADOOP_PREFIX := /opt/hadoop/latest
 INCLUDE_DIRS += $(HADOOP_PREFIX)/include
 LIBRARY_DIRS += $(HADOOP_PREFIX)/lib/native
 
