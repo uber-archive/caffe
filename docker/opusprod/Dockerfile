@@ -32,3 +32,8 @@ RUN cd /opt/caffe-hdfs && \
 ENV LD_LIBRARY_PATH /opt/caffe-hdfs/distribute/lib:$LD_LIBRARY_PATH
 ENV PATH /opt/caffe-hdfs/distribute/bin:$PATH
 ENV PYTHONPATH /opt/caffe-hdfs/distribute/python:$PYTHONPATH
+
+#FIX BUG
+RUN sed -i "s+HADOOP_PREFIX= $(dirname $(dirname $(which hdfs)))+HADOOP_PREFIX=$(dirname $(dirname $(which hdfs)))+" /opt/caffe-hdfs/distribute/bin/caffe_hdfs.sh
+RUN echo dummy
+ADD resolv.conf /etc/
