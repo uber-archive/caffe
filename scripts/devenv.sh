@@ -6,7 +6,7 @@
 # Setup Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export LIBHDFS_OPTS="-Xmx512m"
-export LD_LIBRARY_PATH=$JAVA_HOME/lib/amd64/server/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$JAVA_HOME/lib/amd64/server/:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server:$LD_LIBRARY_PATH
 
 # Setup HDFS
 export HADOOP_PREFIX=/opt/hadoop/latest
