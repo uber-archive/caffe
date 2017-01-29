@@ -1,5 +1,17 @@
 # UBER Version
 - modified to include a HDFS H5 data layer which allows to stream data from HDFS (HADOOP)
+    layer {
+        name: "data"
+        type: "HDFSHDF5Data"
+        top: "data"
+        top: "label"
+        hdfshdf5_data_param {
+            source: "/Sparkie/lgueguen/ocr_h5"   #directory in hdfs containing H5 files
+            batch_size: 64
+            hdfs_config_dir: "/opt/hadoop/latest/etc/hadoop" #directory containing core-site.xml and hdfs-site.xml
+            shuffle: true  #tells to shuffle the list of h5 files
+        }
+    }
 - modified to include a CTC distance layer (include pull request: https://github.com/BVLC/caffe/issues/4322 )
 - to install into an OPUS docker image:
     cd <this cloned directory>
