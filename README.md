@@ -1,6 +1,9 @@
 # UBER Version
 - modified to include a HDFS H5 data layer which allows to stream data from HDFS (HADOOP)
 - modified to include a CTC distance layer (include pull request: https://github.com/BVLC/caffe/issues/4322 )
+- to install into an OPUS docker image:
+    cd <this cloned directory>
+    opus-build-test -R localhost:5000 -i caffe-hdfsgpu-2-0-0 --push -l DEBUG -d test .
 
 # Caffe
 
