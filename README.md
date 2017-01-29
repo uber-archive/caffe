@@ -1,3 +1,7 @@
+# UBER Version
+- modified to include a HDFS H5 data layer which allows to stream data from HDFS (HADOOP)
+- modified to include a CTC distance layer (include pull request: https://github.com/BVLC/caffe/issues/4322 )
+
 # Caffe
 
 [![Build Status](https://travis-ci.org/BVLC/caffe.svg?branch=master)](https://travis-ci.org/BVLC/caffe)
