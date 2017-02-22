@@ -32,6 +32,7 @@ RUN mkdir $HADOOP_PREFIX/lib && \
     for jar in `find $HADOOP_PREFIX/share/hadoop/common/ -name \*jar`; do export CLASSPATH=$CLASSPATH:$jar; done
 
 ENV LD_LIBRARY_PATH $HADOOP_PREFIX/lib/native:$JAVA_HOME/jre/lib/amd64/server/:$LD_LIBRARY_PATH
+
 RUN cd /opt/caffe-hdfs && \
     cp Makefile.config.docker Makefile.config && \
     make distribute
