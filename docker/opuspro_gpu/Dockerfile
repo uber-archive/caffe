@@ -28,8 +28,6 @@ RUN mkdir $HADOOP_PREFIX/lib && \
     mkdir $HADOOP_PREFIX/lib/native && \
     cp /opt/caffe-hdfs/docker/opusprod/native/* $HADOOP_PREFIX/lib/native/. && \
     cd $HADOOP_PREFIX/lib/native/. && \
-    ln -s libhdfs.so.0.0.0 libhdfs.so && \
-    ln -s libhadoop.so.0.0.0 libhadoop.so && \
     for jar in `find $HADOOP_PREFIX/share/hadoop/hdfs/ -name \*jar`; do export CLASSPATH=$CLASSPATH:$jar; done && \
     for jar in `find $HADOOP_PREFIX/share/hadoop/common/ -name \*jar`; do export CLASSPATH=$CLASSPATH:$jar; done
 
